@@ -1,0 +1,22 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+%\begin{table}[]
+\begin{tabular}{|c|c|c|}
+\hline
+Module                                  & Parameter                   & Value                         \\ \hline
+\multirow{2}{*}{Global control}         & $T_H$                    & 100                           \\ \cline{2-3} 
+                                        & $T_L$                    & 10 or 40                      \\ \hline
+                                        %& Population size $n$         & 100                           \\ \cline{2-3} 
+                                        %& Offline data size $N$       & 1000                          \\ \cline{2-3} 
+\multirow{1}{*}{Surrogate model}         & Number of RBF centers $k_c$ & $\sqrt{N}$                    \\ \hline
+\multirow{3}{*}{Division strategy}      & $g_{init}$                  & 10                            \\ \cline{2-3} 
+                                        & $T_g$                       & 8                             \\ \cline{2-3} 
+                                        & $T_r$                       & 4                             \\ \hline
+\multirow{3}{*}{Subspace search}     %& $g_{in}$                    & 10 or 40                      \\ \cline{2-3} 
+                                        & Learning rate $\alpha$                    & 0.1                           \\ \cline{2-3} 
+                                        & DE/rand/1/bin $F$           & 0.5                           \\ \cline{2-3} 
+                                        & DE/rand/1/bin $Cr$           & 0.5                           \\ \hline
+\multirow{1}{*}{Cooperative search} & $r_{top}$                   & 0.1                           \\ \hline 
+                                        %& $n_{top}$                   & $\lfloor 0.1 \cdot n \rfloor$ \\ \hline
+\end{tabular}
+%\end{table}

@@ -1,0 +1,29 @@
+\begin{algorithmic}[1]
+    \REQUIRE~\\
+    
+    $\set{D}$: The offline data.
+    
+    $G$: The division rules.
+    
+    \ENSURE The global and local surrogate models.
+
+    \STATE Split $\set{D}$ into $\left\{\set{D}_1, \dots, \set{D}_g \right\}$ according to $G$
+    
+    %\STATE $i \leftarrow 1$
+    \FOR{$i \leftarrow 1: g$}
+    %\WHILE{$i \le g$}
+        \STATE Train a lower-level surrogate model $\operatorname{LM}_i$ on $\set{D}_i$
+        % \STATE $\frac{1}{l_i} \leftarrow \operatorname{MSE}(M_i)$
+        %\STATE $i \leftarrow i + 1$
+    %\ENDWHILE
+    \ENDFOR
+    %\STATE $i \leftarrow 1$
+    %\WHILE{$i \le g$}
+    \FOR{$i \leftarrow 1: g$}
+        \STATE Compute $\omega_i$ according to \autoref{eq:lm-weight}.
+        % \STATE $\omega_i \leftarrow \cfrac{l_i}{\sum_{j=1}^g l_j}$
+    %\ENDWHILE
+    \ENDFOR
+    \STATE Construct $\operatorname{HM}$ by $\operatorname{LM}_i$ and $\omega_i$
+    \RETURN $\operatorname{HM}$, $\operatorname{LM}_i$
+\end{algorithmic}

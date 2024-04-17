@@ -1,0 +1,34 @@
+% figure
+\usepackage{graphicx}
+\usepackage[]{subfig}
+\usepackage{tikz}
+
+% layout
+\usepackage{multicol}
+\usepackage{multirow}
+
+% code
+\usepackage{minted}
+% Algorithm
+%% Float of algorithm
+\usepackage{algorithm}
+%% Body of algorithm
+\usepackage{algorithmic}
+%% Custom setting for algorithmic
+\renewcommand{\algorithmicrequire}{\textbf{Input:}} 
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+% reference
+\usepackage[style=ieee]{biblatex}
+\addbibresource{ref.bib}
+\usepackage{hyperref}
+
+% math
+%% package for math
+\usepackage{amssymb,amsmath}
+\newcommand{\vect}[1]{\boldsymbol{#1}} % vector
+\newcommand{\mat}[1]{\mathbf{#1}}      % matrix
+\newcommand{\tensor}[1]{\mathsf{#1}}   % tensor
+\newcommand{\set}[1]{\mathbb{#1}}      % set
+\newcommand{\T}{\mathrm{T}}            % transposition
+\everymath{\displaystyle}              % block style

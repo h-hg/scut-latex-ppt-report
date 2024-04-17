@@ -1,0 +1,33 @@
+\begin{algorithmic}[1]
+    \REQUIRE~\\
+
+    $SP$: A set of sub-populations;
+    
+    $r_{top}$: The rate of top-ranked sub-individuals selected in the random merging;
+
+    %$n_{top}$: The number of new individuals from top-ranked random merging;
+
+    $\operatorname{HM}$: The higher-level model;
+    
+    $\operatorname{LMs}$: Lower-level models;
+    
+    
+    \ENSURE A new population.
+    
+    \FOR{$SP_i \in SP$}
+        \STATE Sort $SP_i$ by $\operatorname{LM}_i$
+    \ENDFOR
+    \STATE $P1 \leftarrow$ merge $SP_i$ in order.
+
+    %\STATE $n, \_ \leftarrow \operatorname{size}(SP_1)$
+    \STATE $s \leftarrow r_{top} \cdot \operatorname{size}(SP_1)$
+    \FOR{$SP_i \in SP$}
+        \STATE $\vect{I} \leftarrow$ $s$ random integers from $1$ to $s$
+        \STATE $SPT_i \leftarrow SP_i[\vect{I}]$
+    \ENDFOR
+
+    \STATE $P2 \leftarrow$ merge $SPT_i$ in order.
+    \STATE $P \leftarrow P1 \cup P2$
+    \STATE Prescreen $P$ by $\operatorname{HM}$
+    \RETURN $P$
+\end{algorithmic}

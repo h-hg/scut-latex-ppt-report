@@ -1,0 +1,56 @@
+% page size setting
+\usepackage{geometry}
+
+% layout
+\usepackage{multicol}
+
+% using [H] to ban the float of algorithm, figure and so on.
+\usepackage{float}
+
+% insert pdf page
+\usepackage{pdfpages}
+
+% color
+\usepackage{xcolor}
+
+% figure
+\usepackage{graphicx}
+\usepackage[]{subfig}
+
+% table
+\usepackage{multirow}
+\usepackage{array}
+
+% math
+\usepackage{amsmath}
+\usepackage{amssymb}
+% some custom math symbols
+\newcommand{\vect}[1]{\boldsymbol{#1}} % vector
+\newcommand{\mat}[1]{\mathbf{#1}}      % matrix
+\newcommand{\tensor}[1]{\mathsf{#1}}   % tensor
+\newcommand{\set}[1]{\mathbb{#1}}      % set
+\newcommand{\T}{\mathrm{T}}        % transposition
+\everymath{\displaystyle}              % block style for inline math
+
+
+% code
+%% float of algorithm
+\usepackage{algorithm}
+%% body of algorithm
+\usepackage{algorithmic}
+%% custom setting for algorithmic
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+%% highlight
+\usepackage{minted}
+
+\usepackage{multicol}
+
+% reference
+\usepackage[]{hyperref}
+\hypersetup{
+    colorlinks=true,
+}
+
+% URL
+\usepackage{url}

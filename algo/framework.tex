@@ -1,0 +1,55 @@
+% 尝试写了一下，不好的直接删或改就行
+\begin{algorithmic}[1]
+\REQUIRE~\\
+    $\set{D}$: The offline data;
+
+    %$d$: The problem dimensions;
+    
+    $n$: The size of complete population;
+
+    $T_H$, $T_L$: The maximum generations of higher-level optimization and lower-level optimization;
+
+    $g_{init}$: The initial number of groups; 
+    
+     
+    $T_g$: The interval of updating the number of groups; 
+    
+    $T_r$: The interval of re-dividing the sub-spaces;
+
+    $\alpha$: The learning rate of gradient decent.
+    
+    $r_{top}$: The control parameter of top-ranked random merging in the cooperative search; %The rate of top-ranked sub-individuals to be selected;
+
+    %$n_{top}$: The number of new individuals made of top-ranked sub-individuals;
+    
+    \ENSURE The best solution
+    
+    %\STATE $i \leftarrow 0$
+    \STATE $i_{r} \leftarrow 0$ \COMMENT{The index of $T_r$}
+    \STATE $g \leftarrow g_{init} $;%$+ 1$
+    \STATE $P \leftarrow $ Latin hypercube sampling
+    %\WHILE{$i < T_H$}
+    \FOR{$i \leftarrow 1:T_H$}
+        \IF{$i > 1$ \AND $i  \mod T_g = 1$ \AND $g > 1$}
+            \STATE $g \leftarrow g - 1$
+            \STATE $i_r \leftarrow 0$
+        \ENDIF
+        \IF{$i_r \mod T_r =0$ \AND $g > 1$}
+            \STATE $G \leftarrow $ division rules
+            \STATE $\operatorname{HM}, \operatorname{LM}_i \leftarrow \operatorname{HSJL}(\set{D}, G)$
+        \ENDIF
+        \STATE $SP \leftarrow$ split $P$ according to $G$
+        \FOR{$SP_j\in SP$}
+            \STATE $SP_j \leftarrow \operatorname{LowerLevelSearch}(SP_j, T_L, \alpha, \operatorname{LM}_j)$
+        \ENDFOR
+        \IF{$g > 1$}
+            \STATE $P \leftarrow \operatorname{HigherLevelSearch}(SP, r_{top}, %n_{top},
+            \operatorname{HM},\operatorname{LMs})$
+        \ENDIF
+        % \STATE Prescreen $P$ by $\operatorname{HM}$
+        \STATE $i_r \leftarrow i_r + 1$
+        %\STATE $i \leftarrow i+1$
+    %\ENDWHILE
+    \ENDFOR
+\RETURN $P[0]$
+\end{algorithmic}

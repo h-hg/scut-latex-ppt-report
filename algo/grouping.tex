@@ -1,0 +1,28 @@
+\begin{algorithmic}[1]
+    \REQUIRE~\\
+    
+    $d$: The number of dimensions;
+    
+    $g$: The number of groups;
+    
+    \ENSURE The grouping rules.
+
+    \STATE $\vect{d} \leftarrow$ a permutation of $1 \dots, d$
+    \STATE $\vect{s} \leftarrow \operatorname{shuffle}(\vect{d})$
+    
+    \STATE $i \leftarrow 1$
+    \STATE $j \leftarrow 1$
+    \STATE $G \leftarrow \emptyset$
+    \WHILE{$i \le g$}
+        \IF{$i = g$}
+            \STATE $k \leftarrow d$
+        \ELSE
+            \STATE $k \leftarrow j + \lfloor d / g \rfloor - 1$
+        \ENDIF
+        % \STATE $\vect{I} \leftarrow \vect{d}[j, \dots, k]$
+        \STATE $G_i \leftarrow \vect{s}[j, \dots, k]$
+        \STATE $G \leftarrow G \cup G_i$
+        \STATE $j \leftarrow k + 1$
+    \ENDWHILE
+\RETURN $G$
+\end{algorithmic}
